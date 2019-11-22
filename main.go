@@ -71,9 +71,18 @@ func main() {
 
 	fmt.Printf("int9By2 is type %T and value %#v\n", int9By2,int9By2)
 
+	// printLn is a built-in routine
 	println("Rune is an alias for type int32")
 
 	fmt.Printf("runeA is type %T and value %c\n", runeA, runeA)
 
 	fmt.Printf("runeB is type %T and value %c\n", runeB, runeB)
+	
+	// Anonymous functions are allowed in go, and you can attrib their bodies to a variable or execute directly when declaring
+	closure:=func(msg string){fmt.Println(msg)}
+	
+	// defer instruction schedule a function to execute just before the current routine exits
+	defer closure("i'm a deffered closure, and you have to see me by last")
+	
+	intResult:=func()int{return 42})()
 }
