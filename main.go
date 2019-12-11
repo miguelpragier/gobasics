@@ -18,7 +18,9 @@ func init() {
 	println("check stdout! this routine runs first. Boolean global variable is now ", globalVariable)
 }
 
-func main() {
+// variablesAndSimpleTypes demonstrates all the possible ways to declare and initialize
+// variables and constants of simple ( not struct ) types
+func variablesAndSimpleTypes() {
 	const strConst = "string constant"
 
 	const (
@@ -80,7 +82,14 @@ func main() {
 	fmt.Printf("runeA is type %T and value %c\n", runeA, runeA)
 
 	fmt.Printf("runeB is type %T and value %c\n", runeB, runeB)
+}
 
+func deferredRoutine() {
+	fmt.Println("this is a deferred routine. Was scheduled by GO compiler to run after the last synchronous instruction end")
+	fmt.Println("it's not the same as OOP destructor, but it's often used the same way of, to close/dispose allocated resources")
+}
+
+func closureRoutines() {
 	// Anonymous functions are allowed in go, and you can attrib their bodies to a variable or execute directly when declaring
 	closure := func(msg string) { fmt.Println(msg) }
 
@@ -91,7 +100,19 @@ func main() {
 	intResult := func() int { return 42 }()
 
 	fmt.Printf("This closure returned %d\n", intResult)
+}
 
+func packagedRoutine() {
 	// Now we're using our own package
 	mypack.ExportedRoutine()
+}
+
+func main() {
+	variablesAndSimpleTypes()
+
+	defer deferredRoutine()
+
+	closureRoutines()
+
+	packagedRoutine()
 }
