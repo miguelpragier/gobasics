@@ -18,6 +18,10 @@ func init() {
 	println("check stdout! this routine runs first. Boolean global variable is now ", globalVariable)
 }
 
+func returnTwoValues()(int,int){
+	return 10,20
+}
+
 // variablesAndSimpleTypes demonstrates all the possible ways to declare and initialize
 // variables and constants of simple ( not struct ) types
 func variablesAndSimpleTypes() {
@@ -35,6 +39,7 @@ func variablesAndSimpleTypes() {
 		// The lines above only executes from GO 1.13 ( and later )
 		intVar             = 0b00001111 // int variable declared as binary literal
 		integerHexadecimal = 0x9a
+		_,x:=returnTwoValues()
 	)
 
 	var strA = "string variable declared with 'var' keyword"
