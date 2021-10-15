@@ -17,6 +17,12 @@ import (
 // It means that this "globalVariable" below is global within main package.
 var globalVariable bool // this global-scoped variable is initialized with "false" value
 
+
+/* Functions Order */
+// You can sort the functions according your favorite logic.
+// I like to put init() ( when present ) as first function and main() as last.
+// For me it's important to see the function writen before/above the function that calls it.
+
 // init function executes before main() function, and is designed to
 func init() {
 	globalVariable = true
