@@ -1,16 +1,23 @@
-// Package is the basic unity of code
-// Packages are similar to libraries or modules in another languages
+// Package main contains the entry point of callable executables.
+// In GO a package is the basic unity of code.
+// Packages are similar to libraries or modules in another languages.
+// You can either create a package as a self-contained/independent project, or as a subdirectory within your source code folder.
+// If your package is a non-self-executable-module, it doesn't need a "main package" like this one.
 package main
 
-// Import is the instruction to refer to another packages
+// Import is the instruction to refer to another packages.
+// To use an import in your code, refer to the last segment in its path. 
+//  E.G.: github.com/miguelpragier/gobasics/mypack HelloWorld() method is refered as mypack.HelloWorld().
 import (
 	"fmt"
 	"github.com/miguelpragier/gobasics/mypack"
 )
 
+// A global variable is scoped to its package.
+// It means that this "globalVariable" below is global within main package.
 var globalVariable bool // this global-scoped variable is initialized with "false" value
 
-// init function executes before main(), and is designed to
+// init function executes before main() function, and is designed to
 func init() {
 	globalVariable = true
 
