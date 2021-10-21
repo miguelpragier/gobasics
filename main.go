@@ -6,7 +6,7 @@
 package main
 
 // Import is the instruction to refer to another packages.
-// To use an import in your code, refer to the last segment in its path. 
+// To use an import in your code, refer to the last segment in its path.
 //  E.G.: github.com/miguelpragier/gobasics/mypack HelloWorld() method is refered as mypack.HelloWorld().
 import (
 	"fmt"
@@ -16,7 +16,6 @@ import (
 // A global variable is scoped to its package.
 // It means that this "globalVariable" below is global within main package.
 var globalVariable bool // this global-scoped variable is initialized with "false" value
-
 
 /* Functions Order */
 // You can sort the functions according your favorite logic.
@@ -31,16 +30,12 @@ func init() {
 	println("check stdout! this routine runs first. Boolean global variable is now ", globalVariable)
 }
 
-func returnTwoValues()(int,int){
-	return 10,20
-}
-
 // variablesAndSimpleTypes demonstrates all the possible ways to declare and initialize
 // variables and constants of simple ( not struct ) types
 func variablesAndSimpleTypes() {
 	// Constants should be declared and initialized at once
 
-	// Here goes a <uint64> type coertion.
+	// Here goes a <uint64> type coercion.
 	// in this case, if you don't specify type, the compiler would define as <int>
 	const answer uint64 = 42 // uint64 constant
 
@@ -52,7 +47,7 @@ func variablesAndSimpleTypes() {
 		// The lines above only executes from GO 1.13 ( and later )
 		intVar             = 0b00001111 // int variable declared as binary literal
 		integerHexadecimal = 0x9a
-		_,x:=returnTwoValues()
+		mirrorAnotherConst = integerHexadecimal
 	)
 
 	var strA = "string variable declared with 'var' keyword"
@@ -62,17 +57,17 @@ func variablesAndSimpleTypes() {
 	// Declaring one or more variables in the same instruction block
 	// The same can be done with "const" declarations
 	var (
-		strD                             string = `literal string containing "double quoted substring" and not subject to escape characters like \t or \n`
-		intA                                    = 0                       // int by inference
-		intB                             uint8                            // declared as eight bits unsigned int, initialized with zero
-		fltA                                    = 12.5                    // float64 type is standard for floating point values
-		fltB                                    = float32(9) / float32(2) // here we're forcing float32 type
-		int9By2                                 = 9 / 2                   // Gotcha! Here the result is integer.
-		runeA                                   = 'A'
-		runeB                            rune   = 66
-		octalInt                                = 0o660
-		hexadecimalFloatingPoint                = 0x123p8
-		laterVariableUsingAPreviousValue        = strD
+		strD                             = `literal string containing "double quoted substring" and not subject to escape characters like \t or \n`
+		intA                             = 0                             // int by inference
+		intB                             uint8                           // declared as eight bits unsigned int, initialized with zero
+		fltA                                   = 12.5                    // float64 type is standard for floating point values
+		fltB                                   = float32(9) / float32(2) // here we're forcing float32 type
+		int9By2                                = 9 / 2                   // Gotcha! Here the result is integer.
+		runeA                                  = 'A'
+		runeB                            rune  = 66
+		octalInt                               = 0o660
+		hexadecimalFloatingPoint               = 0x123p8
+		laterVariableUsingAPreviousValue       = strD
 	)
 
 	// This is the standard/embedded function printLn(), to print content to stdout
@@ -118,6 +113,25 @@ func variablesAndSimpleTypes() {
 	fmt.Printf("runeA is type %T and value %c\n", runeA, runeA)
 
 	fmt.Printf("runeB is type %T and value %c\n", runeB, runeB)
+}
+
+// You can return more than one value at once
+func returnSixValues() (string, int, float64, interface{}, byte, *byte) {
+	b := byte(255)
+
+	return "lalala", 987654321, .99999, '\t', b, &b
+}
+
+// you can name your returning values, promoting them to variables
+// The "return" keyword is mandatory when using named returning values
+func returnNamedValuesA() (strValue string,intValue int) {
+	return "=-+_))_ção", 0
+}
+
+// you can name your returning values, promoting them to variables
+// The "return" keyword is mandatory when using named returning values
+func returnNamedValuesB() (strValue string,intValue int) {
+	return "=-+_))_ção", 0
 }
 
 func goStructs() {
@@ -185,6 +199,7 @@ func goStructs() {
 		SingleField string
 	}{"anonymous struct declared and initialized"}
 
+	// anonymous struct slice, declared and initialized
 	var structArray = []struct {
 		s string
 		i int
